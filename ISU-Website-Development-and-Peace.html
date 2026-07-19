@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engaging the Common Good - Development and Peace, Caritas Canada</title>
+<style>
+  :root{
+    --green:#1B4332; --green2:#2D6A4F; --moss:#52796F; --gold:#C9A24B;
+    --cream:#F7F3EA; --card:#FFFFFF; --ink:#20302A; --mute:#5B6B62;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--cream);line-height:1.65}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2}
+  a{color:var(--green2)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(27,67,50,.97);backdrop-filter:blur(6px);
+    display:flex;justify-content:space-between;align-items:center;padding:14px 28px;flex-wrap:wrap}
+  nav .brand{color:#fff;font-family:Georgia,serif;font-weight:bold;font-size:18px;letter-spacing:.3px}
+  nav .brand span{color:var(--gold)}
+  nav ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+  nav ul a{color:#DCE7E0;text-decoration:none;font-size:14px;font-weight:600;transition:color .2s}
+  nav ul a:hover{color:var(--gold)}
+  header.hero{background:linear-gradient(160deg,#123027 0%,#1B4332 55%,#2D6A4F 100%);color:#fff;
+    padding:90px 24px 80px;text-align:center;position:relative;overflow:hidden}
+  header.hero .eyebrow{color:var(--gold);letter-spacing:4px;font-size:13px;font-weight:700;text-transform:uppercase}
+  header.hero h1{font-size:48px;margin:16px auto 10px;max-width:900px}
+  header.hero p.sub{max-width:720px;margin:0 auto;font-size:19px;color:#D8E4DC;font-style:italic}
+  header.hero .tag{display:inline-block;margin-top:26px;background:rgba(201,162,75,.18);border:1px solid var(--gold);
+    color:#F3E7C8;padding:8px 18px;border-radius:30px;font-size:14px;font-weight:600}
+  .leaf{position:absolute;border-radius:50%;opacity:.13;background:var(--gold)}
+  section{max-width:1080px;margin:0 auto;padding:64px 24px}
+  .sec-label{color:var(--gold);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:13px}
+  section h2{font-size:32px;color:var(--green);margin:6px 0 18px}
+  section p.lead{font-size:17px;color:var(--mute);max-width:780px;margin-bottom:26px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px}
+  .stat{background:var(--green);color:#fff;border-radius:14px;padding:26px 16px;text-align:center;
+    box-shadow:0 8px 22px rgba(27,67,50,.18)}
+  .stat .num{font-family:Georgia,serif;font-size:40px;font-weight:bold;color:var(--gold)}
+  .stat .lbl{font-size:13.5px;color:#D8E4DC;margin-top:6px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:10px}
+  .card{background:var(--card);border-radius:14px;padding:26px 22px;box-shadow:0 6px 18px rgba(0,0,0,.07);
+    transition:transform .18s, box-shadow .18s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12)}
+  .card .ic{font-size:30px;margin-bottom:8px}
+  .card h3{font-size:19px;color:var(--green2);margin-bottom:8px}
+  .card p{font-size:14.5px;color:var(--mute)}
+  .quote{background:var(--green2);color:#fff;border-radius:16px;padding:36px 40px;margin:36px auto;max-width:900px;
+    position:relative}
+  .quote p{font-family:Georgia,serif;font-size:22px;font-style:italic;line-height:1.5}
+  .quote .cite{margin-top:14px;color:var(--gold);font-weight:700;font-size:15px;font-style:normal}
+  .timeline{border-left:3px solid var(--gold);margin:22px 0 0 10px;padding-left:26px}
+  .tl{position:relative;margin-bottom:24px}
+  .tl::before{content:"";position:absolute;left:-34px;top:4px;width:14px;height:14px;border-radius:50%;
+    background:var(--gold);border:3px solid var(--cream)}
+  .tl .yr{font-weight:800;color:var(--green);font-size:15px}
+  .tl .txt{font-size:15px;color:var(--mute)}
+  .cst{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+  .principle{background:var(--card);border-radius:12px;box-shadow:0 5px 14px rgba(0,0,0,.06);overflow:hidden}
+  .principle button{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:18px 20px;
+    font-family:Georgia,serif;font-size:18px;color:var(--green);font-weight:bold;display:flex;justify-content:space-between;align-items:center}
+  .principle button .plus{color:var(--gold);font-size:24px;transition:transform .2s}
+  .principle .body{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px}
+  .principle .body p{font-size:14.5px;color:var(--mute);padding-bottom:18px}
+  .principle.open .body{max-height:320px}
+  .principle.open .plus{transform:rotate(45deg)}
+  .impact{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:16px}
+  .impact div{background:var(--card);border-radius:12px;padding:20px 22px;box-shadow:0 5px 14px rgba(0,0,0,.06)}
+  .impact h3{font-size:17px;color:var(--green2);margin-bottom:6px}
+  .impact p{font-size:14.5px;color:var(--mute)}
+  #sources{background:var(--green);color:#EAF1EC}
+  #sources h2{color:#fff}
+  #sources .sec-label{color:var(--gold)}
+  .ref{background:rgba(255,255,255,.06);border-radius:10px;padding:16px 20px;margin-bottom:12px;font-size:14px;
+    color:#DCE7E0}
+  .ref a{color:var(--gold);word-break:break-word}
+  .badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+    background:var(--gold);color:var(--green);padding:2px 9px;border-radius:20px;margin-right:8px}
+  footer{background:#123027;color:#9FB4A8;text-align:center;padding:26px;font-size:13px}
+  @media(max-width:820px){
+    .stats,.cards,.cst,.impact{grid-template-columns:1fr}
+    header.hero h1{font-size:34px}
+    nav ul{gap:14px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Engaging the <span>Common Good</span></div>
+  <ul>
+    <li><a href="#intro">Overview</a></li>
+    <li><a href="#engagement">The Engagement</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#commongood">Common Good</a></li>
+    <li><a href="#cst">CST Principles</a></li>
+    <li><a href="#sources">Works Cited</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="leaf" style="width:220px;height:220px;top:-60px;right:-40px"></div>
+  <div class="leaf" style="width:140px;height:140px;bottom:-30px;left:-20px"></div>
+  <div class="eyebrow">The Catholic Church &amp; Environmental Concern</div>
+  <h1>Hearing the Cry of the Earth and the Cry of the Poor</h1>
+  <p class="sub">How Development and Peace, Caritas Canada turns the Church's care for creation into real ecological justice.</p>
+  <div class="tag">🌍 A Church &amp; Culture ISU · by Harlen Moser</div>
+</header>
+
+<section id="intro">
+  <div class="sec-label">Overview</div>
+  <h2>Where Faith Meets the Climate Crisis</h2>
+  <p class="lead">The environment is one of the biggest cultural issues of our time, and the Catholic Church has stepped
+  right into the middle of it. This project looks at <strong>Development and Peace, Caritas Canada</strong>, the official
+  international solidarity organization of the Catholic Church in Canada, and how its work for ecological justice supports
+  the common good and lives out the principles of Catholic Social Teaching (CST).</p>
+  <div class="stats">
+    <div class="stat"><div class="num" data-target="1967" data-plain="1">1967</div><div class="lbl">Founded by the Canadian bishops</div></div>
+    <div class="stat"><div class="num" data-target="34">0</div><div class="lbl">Countries with partner organizations</div></div>
+    <div class="stat"><div class="num" data-target="55" data-suffix="+">0</div><div class="lbl">Years of solidarity</div></div>
+    <div class="stat"><div class="num" data-target="2008" data-plain="1">2008</div><div class="lbl">Advocating to hold mining firms accountable</div></div>
+  </div>
+</section>
+
+<section id="engagement">
+  <div class="sec-label">The Engagement</div>
+  <h2>What Development and Peace Actually Does</h2>
+  <p class="lead">Founded in 1967 by the Canadian Conference of Catholic Bishops and now the Canadian member of Caritas
+  Internationalis, Development and Peace works in partnership with grassroots groups in 34 countries. On the environment,
+  its engagement takes three main forms:</p>
+  <div class="cards">
+    <div class="card"><div class="ic">🌾</div><h3>Climate Resilient Farming</h3>
+      <p>It funds and supports local partners in the Global South to develop farming that can survive drought, floods and
+      a changing climate, protecting food and livelihoods for the communities least responsible for the crisis.</p></div>
+    <div class="card"><div class="ic">🌳</div><h3>Defending Fragile Bioregions</h3>
+      <p>Through campaigns like <em>For Our Common Home</em>, it stood with Indigenous peoples of the Amazon to protect
+      one of the planet's most vital ecosystems, linking the "cry of the earth" to the "cry of the poor."</p></div>
+    <div class="card"><div class="ic">⚖️</div><h3>Holding Companies Accountable</h3>
+      <p>Since 2008 its members have pressed the Canadian government to hold Canadian mining corporations accountable for
+      environmental and human rights abuses abroad, a distinctly Canadian responsibility.</p></div>
+  </div>
+
+  <div class="quote">
+    <p>"A true ecological approach always becomes a social approach; it must integrate questions of justice in debates on
+    the environment, so as to hear both the cry of the earth and the cry of the poor."</p>
+    <div class="cite">Pope Francis, Laudato Si' (2015), §49, the encyclical that inspires this work</div>
+  </div>
+
+  <p class="lead" style="margin-top:8px">Why does this matter so much in Canada? Because a majority of the world's mining
+  corporations are headquartered or raise capital here. Communities harmed by Canadian mining abroad find it almost
+  impossible to seek justice in Canadian courts, so Development and Peace gives Canadian Catholics a way to respond.</p>
+</section>
+
+<section id="timeline">
+  <div class="sec-label">A Movement Over Time</div>
+  <h2>Campaigns for Creation</h2>
+  <div class="timeline">
+    <div class="tl"><div class="yr">1967</div><div class="txt">Founded by the Canadian bishops in response to Pope Paul VI's call for Catholics in wealthy nations to work for global justice.</div></div>
+    <div class="tl"><div class="yr">2008</div><div class="txt">Begins long term advocacy to hold Canadian mining companies accountable for harms in the Global South.</div></div>
+    <div class="tl"><div class="yr">2015</div><div class="txt">Responds to Pope Francis's encyclical <em>Laudato Si'</em> by launching a campaign on climate change and the poor ahead of the Paris COP21 conference.</div></div>
+    <div class="tl"><div class="yr">2019 to 2020</div><div class="txt">Runs the <em>For Our Common Home</em> campaign, standing with the peoples of the Amazon and creating school resources on the ecological crisis.</div></div>
+    <div class="tl"><div class="yr">2025</div><div class="txt">Sends an eight person delegation to COP30 in Belém, Brazil, and champions the "Turn Debt into Hope" campaign on financial and ecological debt.</div></div>
+  </div>
+</section>
+
+<section id="commongood">
+  <div class="sec-label">Supporting the Common Good</div>
+  <h2>How This Serves Everyone, Especially in Canada</h2>
+  <p class="lead">The <strong>common good</strong> means the conditions that let every person and community flourish. By linking
+  Canadian choices to their effects on the world's poorest, Development and Peace builds up the common good far beyond
+  Church walls:</p>
+  <div class="impact">
+    <div><h3>The world's most vulnerable</h3><p>Global South and Indigenous communities, who did the least to cause climate change but suffer its worst effects, gain support, a voice, and defenders of their land and rights.</p></div>
+    <div><h3>Canadian youth &amp; students</h3><p>School programs, THINKfast fundraisers and parish campaigns form young Canadians as responsible, globally aware citizens (exactly what this course calls a "Responsible Citizen").</p></div>
+    <div><h3>Canadian society &amp; democracy</h3><p>By pushing for laws that hold corporations accountable, it strengthens justice and ethics in Canada's own economy and institutions.</p></div>
+    <div><h3>Future generations</h3><p>Caring for our "common home" today protects the planet handed on to everyone who comes after us, the heart of ecological responsibility.</p></div>
+  </div>
+</section>
+
+<section id="cst">
+  <div class="sec-label">Catholic Social Teaching</div>
+  <h2>The Principles Upheld</h2>
+  <p class="lead">Development and Peace names ten principles of Catholic Social Teaching at the core of its work. Its
+  environmental engagement upholds these ones most clearly. Click each to see how.</p>
+  <div class="cst">
+    <div class="principle"><button>Care for Creation / Ecological Responsibility <span class="plus">+</span></button>
+      <div class="body"><p>The Earth is sacred and all of creation has intrinsic value. By defending bioregions and promoting sustainable farming, Development and Peace treats protecting "our common home for future generations" as a direct response to God, the exact principle at the centre of <em>Laudato Si'</em>.</p></div></div>
+    <div class="principle"><button>Preferential Option for the Poor <span class="plus">+</span></button>
+      <div class="body"><p>Because climate change hits hardest the people "least responsible for it," the organization insists we "must reject solutions that leave out the poor." Its partners work first with the most vulnerable communities, putting the poor at the centre, not the margins.</p></div></div>
+    <div class="principle"><button>Solidarity <span class="plus">+</span></button>
+      <div class="body"><p>As a "democratic movement for international solidarity," it links Canadians directly to partners in 34 countries, acting on the belief that we are one human family responsible for one another across borders.</p></div></div>
+    <div class="principle"><button>The Common Good <span class="plus">+</span></button>
+      <div class="body"><p>Its advocacy for corporate accountability and climate action aims at conditions that let all people and future generations flourish, not private profit. The bishops call this "the sustenance and flourishing of life for all beings."</p></div></div>
+    <div class="principle"><button>Human Dignity <span class="plus">+</span></button>
+      <div class="body"><p>Every person is made in God's image, so defending communities' land, water and rights against environmental harm is really defending their God given dignity, the foundation of all Catholic Social Teaching.</p></div></div>
+    <div class="principle"><button>Participation &amp; Subsidiarity <span class="plus">+</span></button>
+      <div class="body"><p>Rather than imposing solutions, it backs "people led, ecologically sustainable alternatives," empowering local communities to take charge of their own development and respecting their right to participate in decisions that affect them.</p></div></div>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="sec-label">Step 4</div>
+  <h2>Works Cited</h2>
+  <div class="ref"><span class="badge">Journal</span>Imanaka, J. L., Prussia, G. E., &amp; Alexis, S. J. (2016). Laudato Si' and integral ecology: A reconceptualization of sustainability. <em>Journal of Management for Global Sustainability, 5</em>(1), 39 to 74. <a href="https://archium.ateneo.edu/jmgs/vol5/iss1/4/">https://archium.ateneo.edu/jmgs/vol5/iss1/4/</a></div>
+  <div class="ref"><span class="badge">Report</span>Canadian Conference of Catholic Bishops. (2003). <em>"You love all that exists… all things are yours, God, lover of life": A pastoral letter on the Christian ecological imperative.</em> CCCB.</div>
+  <div class="ref"><span class="badge">Report</span>Pope Francis. (2015). <em>Laudato si': On care for our common home</em> [Encyclical letter]. Libreria Editrice Vaticana. <a href="https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html">https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html</a></div>
+  <div class="ref"><span class="badge">Website</span>Development and Peace, Caritas Canada. (2025). <em>Ecological responsibility.</em> <a href="https://devp.org/en/catholic-social-teaching/ecological-responsibility/">https://devp.org/en/catholic-social-teaching/ecological-responsibility/</a></div>
+  <div class="ref"><span class="badge">Magazine</span>O'Loughlin, M. J. (2015, June 18). Top ten takeaways from 'Laudato Si'.' <em>America Magazine.</em> <a href="https://www.americamagazine.org/faith/2015/06/18/top-ten-takeaways-laudato-si/">https://www.americamagazine.org/faith/2015/06/18/top-ten-takeaways-laudato-si/</a></div>
+</section>
+
+<footer>
+  Engaging the Common Good · Church and Culture ISU · Harlen Moser · Sources current as of 2026
+</footer>
+
+<script>
+  document.querySelectorAll('.principle button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+  function animate(el){
+    var target=+el.dataset.target, plain=el.dataset.plain, suffix=el.dataset.suffix||"";
+    if(plain){el.textContent=target+suffix;return;}
+    var dur=1300, t0=performance.now();
+    function step(now){
+      var p=Math.min((now-t0)/dur,1);
+      el.textContent=Math.floor(p*target)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var seen=new WeakSet();
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !seen.has(e.target)){seen.add(e.target);animate(e.target);}
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.stat .num').forEach(function(n){obs.observe(n);});
+</script>
+</body>
+</html>
